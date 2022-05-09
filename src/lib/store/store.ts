@@ -1,4 +1,4 @@
-import { configureStore, EnhancedStore } from "@reduxjs/toolkit"
+import { configureStore } from "@reduxjs/toolkit"
 import authReducer from "../reducers/authReducer"
 import customersReducer from "../reducers/customersReducer"
 import storage from 'redux-persist/lib/storage'
@@ -17,7 +17,7 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
-const store: EnhancedStore = configureStore({
+const store = configureStore({
     reducer: persistedReducer,
 })
 

@@ -14,6 +14,7 @@ declare module 'styled-components' {
             bold: string,
             background: string,
             error: string,
+            link: string,
         }
     }
 }

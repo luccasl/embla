@@ -3,7 +3,9 @@ import Link from "next/link";
 import { useContext } from "react";
 import { MdHome, MdPeople } from "react-icons/md";
 import styled, { ThemeContext } from "styled-components";
-import { PageIndices } from "../lib/constants/pageIndices";
+import { PageIndices } from "../../lib/constants/pageIndices";
+import { media } from "../../styles/responsive";
+import { SignOutButton } from "./SignOutButton";
 
 const Container = styled.div`
     padding: 1rem 0;
@@ -13,6 +15,12 @@ const Container = styled.div`
         font-size: 1rem;
         font-weight: normal;
         color: ${props => props.theme.colors.bold}
+    }
+
+    ${media.desktop} {
+        h3 {
+            margin-top: 5rem;
+        }
     }
 
     nav {
@@ -80,6 +88,7 @@ const SideNavigation: React.FC<{
                         Clientes
                     </ul>
                 </Link>
+                <SignOutButton />
             </nav>
         </Container>
     )

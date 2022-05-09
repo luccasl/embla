@@ -6,7 +6,7 @@ import useLogin, { UseLoginProperties } from "../lib/hooks/useLogin"
 import useProtectedRoute from "../lib/hooks/useProtectedRoute"
 import { Header } from "./Header"
 import { RouteLoader } from "./RouteLoader"
-import { SideNavigation } from "./SideNavigation"
+import { SideNavigation } from "./SideNavigation/SideNavigation"
 import useGetDimensions, { WindowDimensions } from '../lib/hooks/useGetDimensions'
 
 const Container = styled.div`
