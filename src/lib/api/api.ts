@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-    baseURL: 'https://embla-mock-server.herokuapp.com'
+    baseURL: process.env.API_BASE_URL || 'http://localhost:3000'
 })
 
 export { api }
