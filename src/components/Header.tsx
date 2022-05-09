@@ -50,7 +50,7 @@ const Header: React.FC<{
         <Container>
             <Link href='/start'>
                 <div>
-                    <Logo src='logo.svg' />
+                    <Logo src='logo.svg' alt='Embla logo' aria-label='Embla logo' />
                 </div>
             </Link>
             <div className='menu' onClick={ onMenuClick }>

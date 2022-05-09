@@ -108,11 +108,11 @@ const Home: NextPage = () => {
 
   return (
     <Container>
-      <MountainIllustration />
+      <MountainIllustration aria-label='Mountains illustration' />
       <Front>
         <Center>
           <Link href='/'>
-            <Logo src='/logo.svg' alt='Embla logo' />
+            <Logo src='/logo.svg' alt='Embla logo' aria-label='Embla logo' />
           </Link>
         </Center>
         <Center>
