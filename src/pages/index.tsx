@@ -14,6 +14,7 @@ import { MountainIllustration } from '../components/MountainIllustration'
 import { useDispatch } from 'react-redux'
 import { setAuthError } from '../lib/reducers/authReducer'
 import { useAppSelector } from '../lib/store/hooks'
+import Link from 'next/link'
 
 const Container = styled.div`
   background-color: ${props => props.theme.colors.primary};
@@ -110,7 +111,9 @@ const Home: NextPage = () => {
       <MountainIllustration />
       <Front>
         <Center>
-          <Logo src='/logo.svg' alt='Embla logo' />
+          <Link href='/'>
+            <Logo src='/logo.svg' alt='Embla logo' />
+          </Link>
         </Center>
         <Center>
           <Card>
