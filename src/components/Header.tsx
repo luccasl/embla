@@ -18,6 +18,10 @@ const Container = styled.div`
         height: 100%;
     }
 
+    div.logo {
+        display: none;
+    }
+
     ${media.desktop} {
         z-index: 1500;
 
@@ -25,7 +29,7 @@ const Container = styled.div`
             display: none;
         }
 
-        .logo {
+        div.logo {
             display: inline-block;
         }
     }
@@ -49,16 +53,16 @@ const Header: React.FC<{
     return (
         <Container>
             <Link href='/start'>
-                <div>
+                <div className='logo'>
                     <Logo src='logo.svg' alt='Embla logo' aria-label='Embla logo' />
                 </div>
             </Link>
             <div className='menu' onClick={ onMenuClick }>
                 <MdMenu color={ themeContext.colors.light } size={ 24 } />
             </div>
-            <div>
+            {/* <div>
                 <MdSearch color={ themeContext.colors.light } size={ 24 } />
-            </div>
+            </div> */}
         </Container>
     )
 }
