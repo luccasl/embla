@@ -60,6 +60,18 @@ const Home: NextPage = () => {
     router.replace('/customers')
   }, [accessToken])
 
+  const onClickLogin = async (event: React.MouseEvent) => {
+    event.preventDefault()
+
+    if (!validateFields()) {
+      dispatch(setAuthError(''))
+
+      return;
+    }
+
+    login(email, password)
+  }
+
   const validateFields = (): boolean => {
     let success: boolean = true
 
@@ -79,19 +91,11 @@ const Home: NextPage = () => {
       setPasswordError('')
     }
 
-    return success
-  }
-
-  const onClickLogin = async (event: React.MouseEvent) => {
-    event.preventDefault()
-
-    if (!validateFields()) {
-      dispatch(setAuthError(''))
-
-      return;
+    if (!validateEmailFormat()) {
+      success = false;
     }
 
-    login(email, password)
+    return success
   }
 
   const onEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -104,6 +108,22 @@ const Home: NextPage = () => {
     const { value } = event.target
 
     setPassword(value)
+  }
+
+  const validateEmailFormat = (): boolean => {
+    if (email === '') {
+      return true;
+    }
+
+    if (!email.match(/^.+\@.+$/)) {
+      setEmailError('Endereço de e-mail inválido.')
+
+      return false;
+    } else {
+      setEmailError('')
+
+      return true;
+    }
   }
 
   return (
@@ -127,7 +147,9 @@ const Home: NextPage = () => {
                   left={ <MdEmail size={ 21 } /> }
                   value={ email }
                   onChange={ onEmailChange }
-                  error={ emailError } />
+                  onBlur={ validateEmailFormat }
+                  error={ emailError }
+                  maxLength={ 320 } />
                 <TextInput
                   inputId='password'
                   label='Senha'
@@ -135,7 +157,8 @@ const Home: NextPage = () => {
                   left={ <MdLock size={ 21 } /> }
                   value={ password }
                   onChange={ onPasswordChange }
-                  error={ passwordError } />
+                  error={ passwordError }
+                  maxLength={ 60 } />
               </FieldGroup>
               <Button onClick={ onClickLogin }>
                 Entrar
