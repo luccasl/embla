@@ -11,6 +11,12 @@ const Container = styled.div`
     padding: 1rem 0;
     min-width: 240px;
 
+    h3,
+    nav>ul {
+        padding-right: 1rem;
+        padding-left: 1rem;
+    }
+
     h3 {
         font-size: 1rem;
         font-weight: normal;
@@ -37,12 +43,6 @@ const Container = styled.div`
         flex-direction: row;
         align-items: center;
         color: ${props => props.theme.colors.text}
-    }
-
-    h3,
-    nav>ul {
-        padding-right: 1rem;
-        padding-left: 1rem;
     }
 
     nav>ul[data-active='true'] {

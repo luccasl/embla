@@ -5,7 +5,6 @@ import useSignOut from "../../lib/hooks/useSignOut"
 
 const SignOut = styled.button`
     border: none;
-    font-size: 1rem;
     background-color: transparent;
     text-align: left;
     border-top: 1px solid ${props => props.theme.colors.border};
