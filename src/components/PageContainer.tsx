@@ -11,6 +11,7 @@ import useGetDimensions, { WindowDimensions } from '../lib/hooks/useGetDimension
 
 const Container = styled.div`
     flex: 1;
+    height: 100%;
 `
 
 const Page = styled.div`
@@ -21,8 +22,11 @@ const Page = styled.div`
 `
 
 const MainSection = styled.div`
+    background-color: ${props => props.theme.colors.background};
     padding: 1.5rem 2rem;
     flex: 1;
+    display: flex;
+    flex-direction: row;
 
     h1 {
         font-size: 1.5rem;
@@ -32,8 +36,13 @@ const MainSection = styled.div`
     }
 `
 
+const ChildrenContainer = styled.div`
+    flex: 1;
+    height: 100%;
+`
+
 const ResponsiveDrawer = styled(SwipeableDrawer)`
-    z-index: 0;
+    z-index: 1;
 `
 
 const PageContainer: React.FC<{
@@ -71,13 +80,19 @@ const PageContainer: React.FC<{
                 <Header onMenuClick={ openDrawer } />
                 <MainSection>
                     <ResponsiveDrawer
+                        sx={{
+                            width: 240,
+                            flexShrink: 0
+                        }}
                         variant={ windowDimensions === WindowDimensions.Large ? 'permanent' : 'temporary' }
                         open={ isDrawerOpen }
                         onClose={ onDrawerClose }
                         onOpen={ onDrawerOpen } >
                         <SideNavigation activePage={ activePage } />
                     </ResponsiveDrawer>
-                    { children }
+                    <ChildrenContainer>
+                        { children }
+                    </ChildrenContainer>
                 </MainSection>
             </Page>}
         </Container>

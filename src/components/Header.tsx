@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { useContext } from "react"
 import { MdMenu, MdSearch } from "react-icons/md"
 import styled, { ThemeContext } from "styled-components"
@@ -19,7 +20,23 @@ const Container = styled.div`
 
     ${media.desktop} {
         z-index: 1500;
+
+        .menu {
+            display: none;
+        }
+
+        .logo {
+            display: inline-block;
+        }
     }
+`
+
+const Logo = styled.img`
+    &:hover {
+        cursor: pointer;
+    }
+
+    height: 3.5rem;
 `
 
 const Header: React.FC<{
@@ -31,7 +48,12 @@ const Header: React.FC<{
 
     return (
         <Container>
-            <div onClick={ onMenuClick }>
+            <Link href='/start'>
+                <div>
+                    <Logo src='logo.svg' />
+                </div>
+            </Link>
+            <div className='menu' onClick={ onMenuClick }>
                 <MdMenu color={ themeContext.colors.light } size={ 24 } />
             </div>
             <div>

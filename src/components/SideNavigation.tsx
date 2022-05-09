@@ -7,7 +7,7 @@ import { PageIndices } from "../lib/constants/pageIndices";
 
 const Container = styled.div`
     padding: 1rem 0;
-    min-width: 10rem;
+    min-width: 240px;
 
     h3 {
         font-size: 1rem;
@@ -39,6 +39,11 @@ const Container = styled.div`
 
     nav>ul[data-active='true'] {
         background-color: ${props => lighten(props.theme.colors.primary, 0.8)};
+    }
+
+    nav>ul:hover {
+        background-color: ${props => lighten(props.theme.colors.primary, 0.8)};
+        cursor: pointer;
     }
 `
 
