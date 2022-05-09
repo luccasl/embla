@@ -13,6 +13,7 @@ declare module 'styled-components' {
             shadow: string,
             bold: string,
             background: string,
+            error: string,
         }
     }
 }
