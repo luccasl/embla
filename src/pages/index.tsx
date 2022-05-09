@@ -15,6 +15,7 @@ import { useDispatch } from 'react-redux'
 import { setAuthError } from '../lib/reducers/authReducer'
 import { useAppSelector } from '../lib/store/hooks'
 import Link from 'next/link'
+import { validateEmailAddress } from '../lib/utils/validateEmailAddress'
 
 const Container = styled.div`
   background-color: ${props => props.theme.colors.primary};
@@ -115,7 +116,7 @@ const Home: NextPage = () => {
       return true;
     }
 
-    if (!email.match(/^.+\@.+$/)) {
+    if (!validateEmailAddress(email)) {
       setEmailError('Endereço de e-mail inválido.')
 
       return false;
