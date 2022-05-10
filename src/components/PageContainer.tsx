@@ -15,6 +15,9 @@ const Container = styled.div`
 `
 
 const Page = styled.div`
+    position: absolute;
+    left: 0;
+    top: 0;
     height: 100%;
     width: 100%;
     display: flex;
@@ -27,6 +30,7 @@ const MainSection = styled.div`
     flex: 1;
     display: flex;
     flex-direction: row;
+    overflow: hidden;
 
     h1 {
         font-size: 1.5rem;
