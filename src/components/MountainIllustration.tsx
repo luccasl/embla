@@ -2,7 +2,7 @@ import styled from "styled-components"
 import { media } from "../styles/responsive"
 
 const MountainIllustration = styled.img`
-    background-size: contain;
+    background-size: cover;
     background-position: bottom;
     background-repeat: no-repeat;
     

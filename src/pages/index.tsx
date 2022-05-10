@@ -19,6 +19,9 @@ import { validateEmailAddress } from '../lib/utils/validateEmailAddress'
 import Head from 'next/head'
 
 const Container = styled.div`
+  position: absolute;
+  left: 0;
+  top: 0;
   background-color: ${props => props.theme.colors.primary};
   width: 100%;
   height: 100%;
@@ -36,6 +39,7 @@ const Center = styled.div`
 
 const Front = styled.div`
   z-index: 10;
+  height: 100%;
 `
 
 const InvalidFieldMessage: string = 'O campo está vázio.'
