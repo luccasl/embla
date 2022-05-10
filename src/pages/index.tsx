@@ -16,6 +16,7 @@ import { setAuthError } from '../lib/reducers/authReducer'
 import { useAppSelector } from '../lib/store/hooks'
 import Link from 'next/link'
 import { validateEmailAddress } from '../lib/utils/validateEmailAddress'
+import Head from 'next/head'
 
 const Container = styled.div`
   background-color: ${props => props.theme.colors.primary};
@@ -129,6 +130,10 @@ const Home: NextPage = () => {
 
   return (
     <Container>
+      <Head>
+        <title>Embla</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <MountainIllustration aria-label='Mountains illustration' />
       <Front>
         <Center>
