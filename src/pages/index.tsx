@@ -63,6 +63,9 @@ const Home: NextPage = () => {
   }, [accessToken])
 
   const onClickLogin = async (event: React.MouseEvent) => {
+    const button = event.target as HTMLButtonElement
+    button.blur()
+
     event.preventDefault()
 
     if (!validateFields()) {
