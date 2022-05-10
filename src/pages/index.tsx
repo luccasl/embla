@@ -7,7 +7,7 @@ import { Logo } from '../components/Logo'
 import { TextInput } from '../components/TextInput'
 import { MdEmail, MdLock } from 'react-icons/md'
 import useLogin, { UseLoginProperties } from '../lib/hooks/useLogin'
-import React, { ChangeEvent, useEffect, useState } from 'react'
+import React, { ChangeEvent, FormEvent, useEffect, useState } from 'react'
 import { ErrorMessage } from '../components/ErrorMessage'
 import { useRouter } from 'next/router'
 import { MountainIllustration } from '../components/MountainIllustration'
@@ -119,6 +119,11 @@ const Home: NextPage = () => {
     setPassword(value)
   }
 
+  const onPasswordSubmit = (event: FormEvent<HTMLInputElement>) => {
+    const input = event.target as HTMLInputElement
+    input.blur()
+  }
+
   const validateEmailFormat = (): boolean => {
     if (email === '') {
       return true;
@@ -170,6 +175,7 @@ const Home: NextPage = () => {
                   left={ <MdLock size={ 21 } /> }
                   value={ password }
                   onChange={ onPasswordChange }
+                  onSubmit={ onPasswordSubmit }
                   error={ passwordError }
                   maxLength={ 60 } />
               </FieldGroup>

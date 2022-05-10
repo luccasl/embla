@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, FocusEventHandler } from "react";
+import React, { ChangeEventHandler, FocusEventHandler, FormEventHandler } from "react";
 import styled from "styled-components";
 import { ErrorMessage } from "./ErrorMessage";
 
@@ -45,6 +45,7 @@ const TextInput: React.FC<{
   onBlur?: FocusEventHandler<HTMLInputElement>
   error?: string,
   maxLength?: number,
+  onSubmit?: FormEventHandler<HTMLInputElement>,
 }> = ({
   inputId,
   label,
@@ -55,7 +56,7 @@ const TextInput: React.FC<{
   onBlur,
   error = ' ',
   maxLength = 255,
-
+  onSubmit,
 }) => {
     return <InputContainer>
       <label htmlFor={inputId}>
@@ -64,7 +65,14 @@ const TextInput: React.FC<{
         </div>
         {label}
       </label>
-      <input id={inputId} type={ type } value={ value } onChange={ onChange } onBlur={ onBlur } maxLength={ maxLength } />
+      <input
+        id={inputId}
+        type={ type }
+        value={ value }
+        onChange={ onChange }
+        onBlur={ onBlur }
+        maxLength={ maxLength }
+        onSubmit={ onSubmit } />
       <ErrorMessage>
         { error }
       </ErrorMessage>
