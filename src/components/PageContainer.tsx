@@ -43,6 +43,7 @@ const MainSection = styled.div`
 const ChildrenContainer = styled.div`
     display: flex;
     flex: 1;
+    overflow: hidden;
 `
 
 const ResponsiveDrawer = styled(SwipeableDrawer)`

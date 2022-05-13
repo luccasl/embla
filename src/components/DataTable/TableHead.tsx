@@ -1,5 +1,6 @@
 import { useCallback } from "react"
 import styled from "styled-components"
+import { media } from "../../styles/responsive"
 
 const TableHeadContainer = styled.thead`
     width: 100%;
@@ -32,17 +33,7 @@ const TableHeadContainer = styled.thead`
         display: none;
     }
 
-    @media (min-width: 10rem) {
-        th:not(:nth-child(-n + 2)) {
-            display: none;
-        }
-
-        th:nth-child(-n + 2) {
-            display: table-cell;
-        }
-    }
-
-    @media (min-width: 30rem) {
+    ${media.tablet} {
         th:not(:nth-child(-n + 3)) {
         display: none;
         }
@@ -52,7 +43,7 @@ const TableHeadContainer = styled.thead`
         }
     }
 
-    @media (min-width: 50rem) {
+    ${media.desktop} {
         th:nth-child(-n + 3),
         th:not(:nth-child(-n + 3)) {
         display: table-cell;

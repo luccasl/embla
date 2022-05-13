@@ -1,7 +1,8 @@
-import { ChangeEvent, useContext } from "react";
-import { MdSearch } from "react-icons/md";
-import styled from "styled-components";
-import { SearchContext, SearchContextType } from "./SearchContext";
+import { ChangeEvent, useContext } from "react"
+import { MdSearch } from "react-icons/md"
+import styled from "styled-components"
+import { media } from '../../../styles/responsive'
+import { SearchContext, SearchContextType } from "./SearchContext"
 
 const SearchBarContainer = styled.div`
   border: 1px solid #dfdfdf;
@@ -11,7 +12,7 @@ const SearchBarContainer = styled.div`
   position: relative;
   flex: 1;
 
-  @media (min-width: 30rem) {
+  ${media.tablet} {
     flex: 1;
     max-width: 40ch;
   }
@@ -38,8 +39,6 @@ const SearchBarContainer = styled.div`
     z-index: 10;
     color: #333;
     font-size: 1rem;
-    word-spacing: 0.7rem;
-    letter-spacing: 0.02rem;
   }
 
   input {

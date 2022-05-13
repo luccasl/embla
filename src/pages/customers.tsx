@@ -8,6 +8,33 @@ import { PageContainer } from "../components/PageContainer"
 import { PageIndices } from "../lib/constants/pageIndices"
 import { DataTable } from "../components/DataTable"
 
+const headings = [
+    {
+      name: "nome",
+      title: "Nome"
+    },
+    {
+      name: "data",
+      title: "Data"
+    },
+    {
+      name: "documento",
+      title: "Documento"
+    },
+    {
+      name: "banco",
+      title: "Banco"
+    },
+    {
+      name: "agencia",
+      title: "Agencia"
+    },
+    {
+      name: "conta",
+      title: "Conta"
+    },
+]
+
 const Container = styled.div`
     height: 100%;
     width: 100%;
@@ -16,8 +43,6 @@ const Container = styled.div`
 `
 
 const Customers: NextPage = () => {
-    const themeContext = useContext(ThemeContext)
-
     const customers = useGetCustomers()
 
     const renderCustomersRow = (customer: any) => {
@@ -39,11 +64,12 @@ const Customers: NextPage = () => {
     return <Container>
         <PageContainer activePage={ PageIndices.Customers }>
             { customers.length > 0 &&
-                <div style={{ overflow: 'hidden', margin: '0 auto', maxWidth: '60rem', display: 'flex', flexDirection: 'column', flex: 1, }}>
+                <div style={{ overflow: 'hidden', margin: '0 auto', maxWidth: '70rem', display: 'flex', flexDirection: 'column', flex: 1, }}>
                     <h1>
                         Clientes
                     </h1>
                     <DataTable
+                        headings={ headings }
                         rows={ customers }
                         renderRow={ renderCustomersRow } />
                 </div>

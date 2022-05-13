@@ -24,7 +24,7 @@ const Container = styled.div`
   top: 0;
   background-color: ${props => props.theme.colors.primary};
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   padding-right: 2rem;
