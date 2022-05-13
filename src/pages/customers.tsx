@@ -1,12 +1,12 @@
 import { NextPage } from "next"
-import { useCallback, useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import styled, { ThemeContext } from "styled-components"
 import useGetCustomers from "../lib/hooks/useGetCustomers"
 import { parseISO } from "date-fns"
-import { DataGrid } from "@mui/x-data-grid"
 import { formatCpfCnpj } from "../lib/utils/formatCpfCnpj"
 import { PageContainer } from "../components/PageContainer"
 import { PageIndices } from "../lib/constants/pageIndices"
+import { DataTable } from "../components/DataTable"
 
 const Container = styled.div`
     height: 100%;
@@ -20,22 +20,32 @@ const Customers: NextPage = () => {
 
     const customers = useGetCustomers()
 
+    const renderCustomersRow = (customer: any) => {
+        const data = parseISO(customer.data).toLocaleDateString();
+        const documento = formatCpfCnpj(customer.documento)
+
+        return (
+            <tr>
+                <td>{customer.nome}</td>
+                <td>{data}</td>
+                <td>{documento}</td>
+                <td>{customer.banco}</td>
+                <td>{customer.agencia}</td>
+                <td>{customer.conta}</td>
+            </tr>
+        )
+    }
+
     return <Container>
         <PageContainer activePage={ PageIndices.Customers }>
             { customers.length > 0 &&
-                <div style={{ margin: '0 auto', maxWidth: '60rem', height: '100%', display: 'flex', flexDirection: 'column' }}>
+                <div style={{ overflow: 'hidden', margin: '0 auto', maxWidth: '60rem', display: 'flex', flexDirection: 'column', flex: 1, }}>
                     <h1>
                         Clientes
                     </h1>
-                    <div style={{ flex: 1, backgroundColor: themeContext.colors.light }}>
-                        <DataGrid
-                            rows={ customers }
-                            columns={ Object.keys(customers[0]).map(column => ({
-                                field: column,
-                                headerName: column.replace(/^./, char => char.toUpperCase()),
-                                width: 150,
-                            })) } />
-                    </div>
+                    <DataTable
+                        rows={ customers }
+                        renderRow={ renderCustomersRow } />
                 </div>
             }
         </PageContainer>
