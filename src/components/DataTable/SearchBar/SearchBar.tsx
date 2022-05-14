@@ -2,6 +2,7 @@ import { ChangeEvent, useContext } from "react"
 import { MdSearch } from "react-icons/md"
 import styled from "styled-components"
 import { media } from '../../../styles/responsive'
+import { CloseIcon } from "./CloseIcon"
 import { SearchContext, SearchContextType } from "./SearchContext"
 
 const SearchBarContainer = styled.div`
@@ -65,9 +66,21 @@ const SearchBar: React.FC = () => {
       setQuery(value)
   }
 
+  const renderIcon = () => {
+    if (query.trim() === '') {
+      return (
+        <MdSearch size={21} />
+      )
+    } else {
+      return (
+        <CloseIcon />
+      )
+    }
+  }
+
   return (
     <SearchBarContainer>
-      <MdSearch size={21} />
+      { renderIcon() }
       <input
           type="text"
           onChange={onSearchChange}
