@@ -58,29 +58,31 @@ const TableHead: React.FC<{
     onClickHeading,
     headings = []
 }) => {
-    const renderHeadings = useCallback(() =>
-        headings.map((heading: any) => {
-            const {
-                name,
-                title,
-            } = heading
+        const renderHeadings = useCallback(() =>
+            headings.map((heading: any, index: number) => {
+                const {
+                    name,
+                    title,
+                } = heading
 
-            return (
-                <th onClick={() => onClickHeading && onClickHeading(name)} >
-                    { title }
-                </th>
-            )
+                return (
+                    <th
+                        key={index}
+                        onClick={() => onClickHeading && onClickHeading(name)} >
+                        {title}
+                    </th>
+                )
 
-        })
-    , [ headings, ])
+            })
+            , [headings,])
 
-    return (
-        <TableHeadContainer>
-            <tr>
-                { renderHeadings() }
-            </tr>
-        </TableHeadContainer>
-    )
-}
+        return (
+            <TableHeadContainer>
+                <tr>
+                    {renderHeadings()}
+                </tr>
+            </TableHeadContainer>
+        )
+    }
 
 export { TableHead }
