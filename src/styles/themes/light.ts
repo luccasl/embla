@@ -11,7 +11,7 @@ const lightTheme = {
         bold: '#000000',
         error: '#B00020',
         background: '#F2F2F2',
-        link: '#4085AC',
+        link: '#4085AC'
     },
 }
 

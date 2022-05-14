@@ -5,7 +5,7 @@ import { SearchProvider } from './SearchBar'
 type DataTablePropsType = {
     headings: any[],
     rows: any[]
-    renderRow: (row: any) => React.ReactElement
+    renderRow: (row: any, index: number) => React.ReactElement
 }
 
 const DataTableContainer: React.FC<DataTablePropsType> = (props) => {

@@ -1,5 +1,5 @@
 import { NextPage } from "next"
-import { useContext } from "react"
+import { useCallback, useContext } from "react"
 import styled, { ThemeContext } from "styled-components"
 import useGetCustomers from "../lib/hooks/useGetCustomers"
 import { parseISO } from "date-fns"
@@ -45,12 +45,12 @@ const Container = styled.div`
 const Customers: NextPage = () => {
     const customers = useGetCustomers()
 
-    const renderCustomersRow = (customer: any) => {
+    const renderCustomersRow = (customer: any, index: number) => {
         const data = parseISO(customer.data).toLocaleDateString();
         const documento = formatCpfCnpj(customer.documento)
 
         return (
-            <tr>
+            <tr key={ index }>
                 <td>{customer.nome}</td>
                 <td>{data}</td>
                 <td>{documento}</td>

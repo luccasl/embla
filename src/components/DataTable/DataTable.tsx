@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react"
+import React, { useContext, useEffect, useMemo, useRef, useState } from "react"
 import styled from "styled-components"
 import { sanitizeRegexString } from "../../lib/utils/sanitize"
 import { TableHead } from "./TableHead"
@@ -20,7 +20,7 @@ const Container = styled.div`
 const DataTable: React.FC<{
   headings: any[],
   rows: any[],
-  renderRow: (row: any) => React.ReactElement,
+  renderRow: (row: any, index: number) => React.ReactElement,
 }> = ({
   headings = [],
   rows = [],
@@ -42,7 +42,7 @@ const DataTable: React.FC<{
 
   useEffect(() => {
     setPage(0)
-  }, [query, numberOfRows])
+  }, [query, numberOfRows, setPage])
 
   useEffect(() => {
     if (query.trim() === "") {
@@ -63,13 +63,13 @@ const DataTable: React.FC<{
         return queryRegexp.exec(columnsCombined)
       })
     );
-  }, [query])
+  }, [query, rows])
 
   const currentIndex = page * numberOfRows
-  const paginatedRows = filteredRows.slice(
-    currentIndex,
-    currentIndex + numberOfRows
-  )
+  const paginatedRows = useMemo(() => filteredRows.slice(
+      currentIndex,
+      currentIndex + numberOfRows
+  ), [page, filteredRows])
 
   function sortRows (columnName: string) {
     let sortedArray = [...filteredRowsRef.current]
@@ -85,7 +85,7 @@ const DataTable: React.FC<{
 
     setFilteredRows(sortedArray)
   }
-
+  
   return (
       <Container>
         <DataTableFrame>

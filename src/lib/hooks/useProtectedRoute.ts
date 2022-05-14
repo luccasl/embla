@@ -12,7 +12,7 @@ function useProtectedRoute() {
         }
 
         router.replace('/')
-    }, [ accessToken ])
+    }, [ accessToken, router ])
 }
 
 export default useProtectedRoute

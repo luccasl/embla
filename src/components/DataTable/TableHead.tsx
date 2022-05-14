@@ -74,7 +74,7 @@ const TableHead: React.FC<{
                 )
 
             })
-            , [headings,])
+            , [headings, onClickHeading])
 
         return (
             <TableHeadContainer>

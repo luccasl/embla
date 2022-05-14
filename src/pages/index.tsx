@@ -64,7 +64,7 @@ const Home: NextPage = () => {
     }
 
     router.replace('/customers')
-  }, [accessToken])
+  }, [accessToken, router])
 
   const onClickLogin = async (event: React.MouseEvent) => {
     const button = event.target as HTMLButtonElement

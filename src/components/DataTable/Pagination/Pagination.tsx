@@ -1,4 +1,4 @@
-import { ChangeEvent, useMemo } from "react"
+import { ChangeEvent, memo, useMemo } from "react"
 import { MdChevronLeft, MdChevronRight } from "react-icons/md"
 
 import { ComboBox } from "./ComboBox"

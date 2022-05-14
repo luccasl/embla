@@ -1,6 +1,7 @@
-import React from "react"
+import React, { memo, useEffect } from "react"
 import styled from "styled-components"
 import { media } from "../../styles/responsive"
+import { lighten } from "@mui/material"
 
 const TableBodyContainer = styled.tbody`
     display: block;
@@ -14,7 +15,7 @@ const TableBodyContainer = styled.tbody`
     }
 
     &::-webkit-scrollbar-thumb {
-        background-color: #8a8fff;
+        background-color: ${props => props.theme.colors.border};
         border: 1px solid #eae4ff;
         border-radius: 1rem;
     }
@@ -27,11 +28,11 @@ const TableBodyContainer = styled.tbody`
     }
 
     & > tr:not(:last-child) {
-        border-bottom: 1px solid #dfdfdf;
+        border-bottom: 1px solid ${props => lighten(props.theme.colors.border, 0.5)};
     }
 
     & > tr:hover {
-        background-color: #eae4ff;
+        background-color: ${props => lighten(props.theme.colors.primary, 0.8)};
         cursor: pointer;
     }
 
@@ -39,7 +40,7 @@ const TableBodyContainer = styled.tbody`
         background-color: #fafafa;
 
         &:hover {
-            background-color: #eae4ff;
+            background-color: ${props => lighten(props.theme.colors.primary, 0.8)};
             cursor: pointer;
         }
     }
@@ -76,15 +77,17 @@ const TableBodyContainer = styled.tbody`
     }
 `
 
-const TableBody: React.FC<{
-    rows: any[]
-    renderRow: (row: any) => React.ReactElement,
+const TableBodyComponent: React.FC<{
+    rows: any[],
+    renderRow: (row: any, index: number) => React.ReactElement,
 }> = ({
     rows = [],
     renderRow,
 }) => {
-    const renderRows = () =>
-        rows.map((row: any, index: number) => renderRow(row))
+    const renderRows = () => {
+        console.log('Render rows')
+        return rows.map((row: any, index: number) => renderRow(row, index))
+    }
 
     return (
         <TableBodyContainer>
@@ -92,5 +95,7 @@ const TableBody: React.FC<{
         </TableBodyContainer>
     )
 }
+
+const TableBody = memo(TableBodyComponent)
 
 export { TableBody }
