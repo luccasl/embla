@@ -1,23 +1,11 @@
 import { ChangeEvent, useMemo } from "react"
 import { MdChevronLeft, MdChevronRight } from "react-icons/md"
-import styled from "styled-components"
-import { media } from "../../../styles/responsive"
+
 import { ComboBox } from "./ComboBox"
 import { DesktopPaginationElement } from "./DesktopPaginationElement"
-import { usePagination, UsePaginationReturnProps } from "./hooks/usePagination"
+import { usePagination } from "./hooks/usePagination"
+import { PaginationContainer } from "./PaginationContainer"
 import { PaginationElement } from "./PaginationElement"
-
-const PaginationContainer = styled.div`
-    height: 3rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0.8rem 0;
-
-    ${media.desktop} {
-        justify-content: flex-end;
-    }
-`
 
 const Pagination: React.FC<{
     rows: any[]
