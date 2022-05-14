@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useRef, useState } from "react"
+import React, { useContext, useEffect, useRef, useState } from "react"
 import styled from "styled-components"
 import { sanitizeRegexString } from "../../lib/utils/sanitize"
 import { TableHead } from "./TableHead"
@@ -64,8 +64,6 @@ const DataTable: React.FC<{
       })
     );
   }, [query])
-
-  useEffect(() => console.log(filteredRows, [filteredRows]))
 
   const currentIndex = page * numberOfRows
   const paginatedRows = filteredRows.slice(
