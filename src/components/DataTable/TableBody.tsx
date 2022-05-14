@@ -84,10 +84,9 @@ const TableBodyComponent: React.FC<{
     rows = [],
     renderRow,
 }) => {
-    const renderRows = () => {
-        console.log('Render rows')
-        return rows.map((row: any, index: number) => renderRow(row, index))
-    }
+    const renderRows = () => (
+        rows.map((row: any, index: number) => renderRow(row, index))
+    )
 
     return (
         <TableBodyContainer>
