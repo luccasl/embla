@@ -18,11 +18,13 @@ import { Table } from "./Table"
 import { SortingContext, SortingContextType } from "./SortingContext"
 import { DataTableContainer } from "./DataTableContainer"
 
-const DataTable: React.FC<{
-  headings: any[],
-  rows: any[],
-  renderRow: (row: any) => React.ReactElement,
-}> = ({
+type DataTableProps = {
+  headings: any[]
+  rows: any[]
+  renderRow: (row: any) => React.ReactElement
+}
+
+const DataTable: React.FC<DataTableProps> = ({
   headings = [],
   rows = [],
   renderRow,
