@@ -1,5 +1,11 @@
-import React, { useContext, useEffect, useMemo, useRef, useState } from "react"
-import styled from "styled-components"
+import React, {
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState
+} from "react"
+
 import { sanitizeRegexString } from "../../lib/utils/sanitize"
 import { TableHead } from "./TableHead"
 import { SearchContext, SearchContextType } from "./SearchBar"
@@ -10,13 +16,7 @@ import { TableBody } from "./TableBody"
 import { DataTableFrame } from "./DataTableFrame"
 import { Table } from "./Table"
 import { SortingContext, SortingContextType } from "./SortingContext"
-
-const Container = styled.div`
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  overflow: hidden;
-`;
+import { DataTableContainer } from "./DataTableContainer"
 
 const DataTable: React.FC<{
   headings: any[],
@@ -93,7 +93,7 @@ const DataTable: React.FC<{
   }
   
   return (
-      <Container>
+      <DataTableContainer>
         <DataTableFrame>
           <DataTableHeader />
           <Table>
@@ -103,7 +103,7 @@ const DataTable: React.FC<{
           <Pagination
             rows={ filteredRows } />
         </DataTableFrame>
-      </Container>
+      </DataTableContainer>
   )
 }
 
