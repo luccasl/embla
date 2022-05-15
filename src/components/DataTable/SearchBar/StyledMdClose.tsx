@@ -3,6 +3,9 @@ import styled from "styled-components";
 
 const StyledMdClose = styled(MdClose)`
     z-index: 30;
+    position: absolute;
+    right: 0.5rem;
+    top: 0;
 
     &:hover {
         cursor: pointer;

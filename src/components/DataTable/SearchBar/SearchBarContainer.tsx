@@ -14,21 +14,9 @@ const SearchBarContainer = styled.div`
     max-width: 40ch;
   }
 
-  svg {
-    position: absolute;
-    left: 0.5rem;
-    top: 0;
-    color: #777;
-    height: 100%;
-  }
-
-  &:focus-within > svg {
-    color: #000;
-  }
-
   input {
     border: none;
-    padding-left: 2.4rem;
+    padding-left: 1rem;
     padding-right: 1rem;
     background-color: transparent;
     height: 1.5rem;

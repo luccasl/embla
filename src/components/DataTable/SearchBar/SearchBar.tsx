@@ -4,6 +4,7 @@ import { MdSearch } from "react-icons/md"
 import { CloseIcon } from "./CloseIcon"
 import { SearchBarContainer } from "./SearchBarContainer"
 import { SearchContext, SearchContextType } from "./SearchContext"
+import { SearchIcon } from "./SearchIcon"
 
 const SearchBar: React.FC = () => {
   const { query, setQuery } = useContext(SearchContext) as SearchContextType
@@ -13,21 +14,20 @@ const SearchBar: React.FC = () => {
       setQuery(value)
   }
 
-  const renderIcon = () => {
-    if (query.trim() === '') {
-      return (
-        <MdSearch size={21} />
-      )
-    } else {
-      return (
-        <CloseIcon />
-      )
+  const renderCloseIcon = () => {
+    if (query.length < 1) {
+      return
     }
+
+    return (
+      <CloseIcon />
+    )
   }
 
   return (
     <SearchBarContainer>
-      { renderIcon() }
+      <SearchIcon />
+      { renderCloseIcon() }
       <input
           type="text"
           onChange={onSearchChange}
