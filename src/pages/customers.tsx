@@ -70,17 +70,15 @@ const Customers: NextPage = () => {
 
     return <Container>
         <PageContainer activePage={ PageIndices.Customers }>
-            { customers.length > 0 &&
-                <div style={{ overflow: 'hidden', margin: '0 auto', maxWidth: '70rem', display: 'flex', flexDirection: 'column', flex: 1, }}>
-                    <h1>
-                        Clientes
-                    </h1>
-                    <DataTable
-                        headings={ headings }
-                        rows={ customers }
-                        renderRow={ renderCustomersRow } />
-                </div>
-            }
+          <div style={{ overflow: 'hidden', margin: '0 auto', maxWidth: '70rem', display: 'flex', flexDirection: 'column', flex: 1, }}>
+            <h1>
+                Clientes
+            </h1>
+            <DataTable
+                headings={ headings }
+                rows={ customers }
+                renderRow={ renderCustomersRow } />
+          </div>
         </PageContainer>
     </Container>
 }
