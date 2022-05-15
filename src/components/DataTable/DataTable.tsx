@@ -20,7 +20,7 @@ const Container = styled.div`
 const DataTable: React.FC<{
   headings: any[],
   rows: any[],
-  renderRow: (row: any, index: number) => React.ReactElement,
+  renderRow: (row: any) => React.ReactElement,
 }> = ({
   headings = [],
   rows = [],
@@ -30,7 +30,6 @@ const DataTable: React.FC<{
 
   const {
     numberOfRows,
-    setNumberOfRows,
     page,
     setPage,
   } = useContext(PaginationContext) as PaginationContextType

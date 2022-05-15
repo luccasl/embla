@@ -44,48 +44,17 @@ const TableBodyContainer = styled.tbody`
             cursor: pointer;
         }
     }
-
-    td {
-        flex: 1;
-        text-align: left;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        font-size: 1rem;
-        margin: 0 1rem;
-    }
-
-    td:not(:nth-child(-n + 2)) {
-        display: none;
-    }
-
-    ${media.tablet} {
-        td:not(:nth-child(-n + 3)) {
-        display: none;
-        }
-
-        td:nth-child(-n + 3) {
-        display: table-cell;
-        }
-    }
-
-    ${media.desktop} {
-        td:nth-child(-n + 3),
-        td:not(:nth-child(-n + 3)) {
-        display: table-cell;
-        }
-    }
 `
 
 const TableBodyComponent: React.FC<{
     rows: any[],
-    renderRow: (row: any, index: number) => React.ReactElement,
+    renderRow: (row: any) => React.ReactElement,
 }> = ({
     rows = [],
     renderRow,
 }) => {
     const renderRows = () => (
-        rows.map((row: any, index: number) => renderRow(row, index))
+        rows.map((row: any) => renderRow(row))
     )
 
     return (

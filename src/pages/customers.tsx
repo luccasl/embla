@@ -7,31 +7,39 @@ import { formatCpfCnpj } from "../lib/utils/formatCpfCnpj"
 import { PageContainer } from "../components/PageContainer"
 import { PageIndices } from "../lib/constants/pageIndices"
 import { DataTable } from "../components/DataTable"
+import { TableCell } from "../components/DataTable/TableCell"
 
 const headings = [
     {
-      name: "nome",
-      title: "Nome"
+      name: 'nome',
+      title: 'Nome',
+      large: true,
     },
     {
-      name: "data",
-      title: "Data"
+      name: 'data',
+      title: 'Data',
+      align: 'right',
     },
     {
-      name: "documento",
-      title: "Documento"
+      name: 'documento',
+      title: 'Documento',
+      large: true,
+      align: 'right',
     },
     {
-      name: "banco",
-      title: "Banco"
+      name: 'banco',
+      title: 'Banco',
+      large: true,
     },
     {
-      name: "agencia",
-      title: "Agencia"
+      name: 'agencia',
+      title: 'Agencia',
+      align: 'right',
     },
     {
-      name: "conta",
-      title: "Conta"
+      name: 'conta',
+      title: 'Conta',
+      align: 'right',
     },
 ]
 
@@ -45,18 +53,18 @@ const Container = styled.div`
 const Customers: NextPage = () => {
     const customers = useGetCustomers()
 
-    const renderCustomersRow = (customer: any, index: number) => {
+    const renderCustomersRow = (customer: any) => {
         const data = parseISO(customer.data).toLocaleDateString();
         const documento = formatCpfCnpj(customer.documento)
 
         return (
-            <tr key={ index }>
-                <td>{customer.nome}</td>
-                <td>{data}</td>
-                <td>{documento}</td>
-                <td>{customer.banco}</td>
-                <td>{customer.agencia}</td>
-                <td>{customer.conta}</td>
+            <tr key={ customer.documento }>
+                <TableCell large>{customer.nome}</TableCell>
+                <TableCell align='right'>{data}</TableCell>
+                <TableCell large align='right'>{documento}</TableCell>
+                <TableCell large>{customer.banco}</TableCell>
+                <TableCell align='right'>{customer.agencia}</TableCell>
+                <TableCell align='right'>{customer.conta}</TableCell>
             </tr>
         )
     }

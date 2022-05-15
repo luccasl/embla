@@ -1,18 +1,21 @@
 import { DataTable } from './DataTable'
 import { PaginationProvider } from './Pagination'
 import { SearchProvider } from './SearchBar'
+import { SortingProvider } from './SortingContext'
 
 type DataTablePropsType = {
     headings: any[],
     rows: any[]
-    renderRow: (row: any, index: number) => React.ReactElement
+    renderRow: (row: any) => React.ReactElement
 }
 
 const DataTableContainer: React.FC<DataTablePropsType> = (props) => {
     return (
         <SearchProvider>
             <PaginationProvider>
-                <DataTable {...props} />
+                <SortingProvider>
+                    <DataTable {...props} />
+                </SortingProvider>
             </PaginationProvider>
         </SearchProvider>
     )
