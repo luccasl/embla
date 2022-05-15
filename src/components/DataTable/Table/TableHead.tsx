@@ -1,5 +1,6 @@
 import { useCallback, useContext } from "react"
-import { SortingContext, SortingContextType, } from "./SortingContext"
+
+import { SortingContext, SortingContextType, } from "../SortingContext"
 import { TableHeadContainer } from "./TableHeadContainer"
 import { TableHeading } from "./TableHeading"
 

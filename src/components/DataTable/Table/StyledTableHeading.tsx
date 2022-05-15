@@ -1,6 +1,7 @@
 import { lighten } from "@mui/material"
 import styled from "styled-components"
-import { media } from "../../styles/responsive"
+
+import { media } from '../../../styles/responsive'
 
 type StyledTableHeadingProps = {
     large?: boolean

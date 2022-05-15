@@ -7,14 +7,12 @@ import React, {
 } from "react"
 
 import { sanitizeRegexString } from "../../lib/utils/sanitize"
-import { TableHead } from "./TableHead"
 import { SearchContext, SearchContextType } from "./SearchBar"
 import { DataTableHeader } from "./DataTableHeader"
 import { PaginationContext, PaginationContextType } from "./Pagination"
 import { Pagination } from "./Pagination/Pagination"
-import { TableBody } from "./TableBody"
+import { Table, TableBody, TableHead } from "./Table"
 import { DataTableFrame } from "./DataTableFrame"
-import { Table } from "./Table"
 import { SortingContext, SortingContextType } from "./SortingContext"
 import { DataTableContainer } from "./DataTableContainer"
 

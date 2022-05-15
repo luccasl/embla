@@ -1,7 +1,7 @@
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import { MdArrowDownward } from "react-icons/md"
-import { SortingContext, SortingContextType } from "./SortingContext"
 
+import { SortingContext, SortingContextType } from "../SortingContext"
 import { StyledTableHeading } from "./StyledTableHeading"
 
 type Align = 'left' | 'center' | 'right' | 'justify' | 'char' | undefined

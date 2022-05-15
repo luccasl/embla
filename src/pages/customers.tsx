@@ -7,7 +7,7 @@ import { formatCpfCnpj } from "../lib/utils/formatCpfCnpj"
 import { PageContainer } from "../components/PageContainer"
 import { PageIndices } from "../lib/constants/pageIndices"
 import { DataTable } from "../components/DataTable"
-import { TableCell } from "../components/DataTable/TableCell"
+import { TableCell } from "../components/DataTable/Table"
 
 const headings = [
     {

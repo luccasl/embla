@@ -1,5 +1,6 @@
-import styled from "styled-components";
-import { media } from "../../styles/responsive";
+import styled from "styled-components"
+
+import { media } from "../../../styles/responsive"
 
 type TableCellProps = {
     large?: boolean,
