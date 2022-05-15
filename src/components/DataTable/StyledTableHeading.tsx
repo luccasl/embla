@@ -36,6 +36,16 @@ const StyledTableHeading = styled.th<StyledTableHeadingProps>`
         }
     }
 
+    ${media.desktopSmall} {
+        &:not(:nth-child(-n + 4)) {
+            display: none;
+        }
+
+        &:nth-child(-n + 4) {
+            display: flex;
+        }
+    }
+
     ${media.desktop} {
         &:nth-child(-n + 3),
         &:not(:nth-child(-n + 3)) {

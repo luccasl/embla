@@ -28,6 +28,16 @@ const TableCell = styled.td<TableCellProps>`
         }
     }
 
+    ${media.desktopSmall} {
+        &:not(:nth-child(-n + 4)) {
+            display: none;
+        }
+
+        &:nth-child(-n + 4) {
+            display: table-cell;
+        }
+    }
+
     ${media.desktop} {
         &:nth-child(-n + 3),
         &:not(:nth-child(-n + 3)) {
