@@ -15,6 +15,7 @@ const ProgressIndicatorComponent = styled.div<ProgressIndicatorComponentProps>`
     opacity: ${props => props.loading ? 1 : 0};
     transition-property: opacity;
     transition-duration: 300ms;
+    box-shadow: 0 0.05rem 0.05rem ${props => props.theme.colors.shadow}
 `
 
 export { ProgressIndicatorComponent }
