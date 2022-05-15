@@ -36,3 +36,6 @@ yarn-error.log*
 
 # jest
 src/lib/coverage
+
+# vscode
+/.vscode
