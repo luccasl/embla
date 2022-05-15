@@ -16,6 +16,7 @@ import { DataTableFrame } from "./DataTableFrame"
 import { SortingContext, SortingContextType } from "./SortingContext"
 import { DataTableContainer } from "./DataTableContainer"
 import { compareAny } from "../../lib/utils/sort"
+import { ProgressIndicator } from "./ProgressIndicator"
 
 type DataTableProps = {
   headings: any[]
@@ -41,6 +42,8 @@ const DataTable: React.FC<DataTableProps> = ({
   } = useContext(SortingContext) as SortingContextType
 
   const [filteredRows, setFilteredRows] = useState<any[]>(rows)
+  const [filterTimer, setFilterTimer] = useState<NodeJS.Timeout>()
+  const [loadingFilter, setLoadingFilter] = useState<boolean>(false)
 
   const filteredRowsRef = useRef<any[]>([])
   filteredRowsRef.current = filteredRows
@@ -56,6 +59,27 @@ const DataTable: React.FC<DataTableProps> = ({
       setFilteredRows(rows)
     }
 
+    startFilterTimer()
+  }, [query, rows, setSortedHeading])
+
+  useEffect(() => {
+    if (filteredRows) {
+      setLoadingFilter(false)
+    }
+  }, [filteredRows])
+
+  const startFilterTimer = () => {
+    if (filterTimer) {
+      clearTimeout(filterTimer)
+    }
+
+    const timer = setTimeout(filterRows, 700)
+    setFilterTimer(timer)
+
+    setLoadingFilter(true)
+  }
+
+  const filterRows = () => {
     setFilteredRows(
       rows.filter((row: any) => {
         const sanitizedQuery = sanitizeRegexString(query)
@@ -69,8 +93,8 @@ const DataTable: React.FC<DataTableProps> = ({
         const queryRegexp = new RegExp(queryRegexString, "i")
         return queryRegexp.exec(columnsCombined)
       })
-    );
-  }, [query, rows, setSortedHeading])
+    )
+  }
 
   const currentIndex = page * numberOfRows
   const paginatedRows = useMemo(() => filteredRows.slice(
@@ -96,6 +120,7 @@ const DataTable: React.FC<DataTableProps> = ({
         <DataTableHeader />
         <Table>
           <TableHead onClickHeading={sortRows} headings={headings} />
+          <ProgressIndicator loading={loadingFilter} />
           <TableBody rows={paginatedRows} renderRow={renderRow} />
         </Table>
         <Pagination
