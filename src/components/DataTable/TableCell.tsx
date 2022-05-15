@@ -7,8 +7,8 @@ type TableCellProps = {
 
 const TableCell = styled.td<TableCellProps>`
     flex: ${props => props.large ? 2 : 1};
+    vertical-align: top;
     text-align: ${props => props.align};
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 1rem;
