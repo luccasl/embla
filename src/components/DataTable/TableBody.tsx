@@ -1,10 +1,12 @@
 import React, { memo } from "react"
 import { TableBodyContainer } from "./TableBodyContainer"
 
-const TableBodyComponent: React.FC<{
-    rows: any[],
-    renderRow: (row: any) => React.ReactElement,
-}> = ({
+type TableBodyComponentProps = {
+    rows: any[]
+    renderRow: (row: any) => React.ReactElement
+}
+
+const TableBodyComponent: React.FC<TableBodyComponentProps> = ({
     rows = [],
     renderRow,
 }) => {
