@@ -1,5 +1,5 @@
 function sanitizeRegexString(value: string): string {
-    return value
+    return value.replace(/[#-.]|[[-^]|[?|{}]/g, '\\$&')
 }
 
 export { sanitizeRegexString }
