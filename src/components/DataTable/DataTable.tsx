@@ -15,6 +15,7 @@ import { Table, TableBody, TableHead } from "./Table"
 import { DataTableFrame } from "./DataTableFrame"
 import { SortingContext, SortingContextType } from "./SortingContext"
 import { DataTableContainer } from "./DataTableContainer"
+import { compareAny } from "../../lib/utils/sort"
 
 type DataTableProps = {
   headings: any[]
@@ -27,7 +28,7 @@ const DataTable: React.FC<DataTableProps> = ({
   rows = [],
   renderRow,
 }) => {
-  const {query, } = useContext(SearchContext) as SearchContextType
+  const { query, } = useContext(SearchContext) as SearchContextType
 
   const {
     numberOfRows,
@@ -73,37 +74,34 @@ const DataTable: React.FC<DataTableProps> = ({
 
   const currentIndex = page * numberOfRows
   const paginatedRows = useMemo(() => filteredRows.slice(
-      currentIndex,
-      currentIndex + numberOfRows
+    currentIndex,
+    currentIndex + numberOfRows
   ), [currentIndex, filteredRows, numberOfRows])
 
-  function sortRows (columnName: string) {
+  function sortRows(columnName: string) {
     let sortedArray = [...filteredRowsRef.current]
-    sortedArray.sort((a: any, b: any) =>
-      !isNaN(parseInt(a[columnName]))
-        ? parseInt(a[columnName]) > parseInt(b[columnName])
-          ? 1
-          : -1
-        : a[columnName].toString() > b[columnName].toString()
-        ? 1
-        : -1
-    )
+    sortedArray.sort((row: any, nextRow: any) => {
+      const cell = row[columnName]
+      const nextCell = nextRow[columnName]
+
+      return compareAny(cell, nextCell)
+    })
 
     setFilteredRows(sortedArray)
   }
-  
+
   return (
-      <DataTableContainer>
-        <DataTableFrame>
-          <DataTableHeader />
-          <Table>
-            <TableHead onClickHeading={ sortRows } headings={ headings } />
-            <TableBody rows={ paginatedRows } renderRow={ renderRow } />
-          </Table>
-          <Pagination
-            rows={ filteredRows } />
-        </DataTableFrame>
-      </DataTableContainer>
+    <DataTableContainer>
+      <DataTableFrame>
+        <DataTableHeader />
+        <Table>
+          <TableHead onClickHeading={sortRows} headings={headings} />
+          <TableBody rows={paginatedRows} renderRow={renderRow} />
+        </Table>
+        <Pagination
+          rows={filteredRows} />
+      </DataTableFrame>
+    </DataTableContainer>
   )
 }
 
