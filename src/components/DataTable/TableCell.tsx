@@ -12,7 +12,7 @@ const TableCell = styled.td<TableCellProps>`
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 1rem;
-    margin: 0 1rem; 
+    margin: 0 0.5rem; 
 
     &:not(:nth-child(-n + 2)) {
         display: none;

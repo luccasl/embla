@@ -9,7 +9,7 @@ type StyledTableHeadingProps = {
 const StyledTableHeading = styled.th<StyledTableHeadingProps>`
     flex: ${props => props.large ? 2 : 1};
     font-size: 1rem;
-    margin: 0 1rem;
+    margin: 0 0.5rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
