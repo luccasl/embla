@@ -10,8 +10,8 @@ const SearchBar: React.FC = () => {
   const { query, setQuery } = useContext(SearchContext) as SearchContextType
 
   const onSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
-      const { value } = event.target
-      setQuery(value)
+    const { value } = event.target
+    setQuery(value)
   }
 
   const renderCloseIcon = () => {
@@ -24,16 +24,26 @@ const SearchBar: React.FC = () => {
     )
   }
 
+  const renderSearchIcon = () => {
+    if (query.length > 0) {
+      return
+    }
+
+    return (
+      <SearchIcon />
+    )
+  }
+
   return (
     <SearchBarContainer>
-      <SearchIcon />
-      { renderCloseIcon() }
+      {renderSearchIcon()}
+      {renderCloseIcon()}
       <input
-          type="text"
-          onChange={onSearchChange}
-          value={query}
+        type="text"
+        onChange={onSearchChange}
+        value={query}
       />
-  </SearchBarContainer>
+    </SearchBarContainer>
   )
 }
 
