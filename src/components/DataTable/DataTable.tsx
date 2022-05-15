@@ -49,9 +49,10 @@ const DataTable: React.FC<{
   }, [query, numberOfRows, setPage])
 
   useEffect(() => {
+    setSortedHeading('')
+
     if (query.trim() === "") {
       setFilteredRows(rows)
-      setSortedHeading('')
     }
 
     setFilteredRows(
