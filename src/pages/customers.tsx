@@ -1,6 +1,5 @@
 import { NextPage } from "next"
-import { useCallback, useContext } from "react"
-import styled, { ThemeContext } from "styled-components"
+import styled from "styled-components"
 import useGetCustomers from "../lib/hooks/useGetCustomers"
 import { parseISO } from "date-fns"
 import { formatCpfCnpj } from "../lib/utils/formatCpfCnpj"
