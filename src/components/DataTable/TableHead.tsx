@@ -1,20 +1,7 @@
 import { useCallback, useContext } from "react"
-import styled from "styled-components"
-import { SortingContext, SortingContextType, SortingProvider } from "./SortingContext"
+import { SortingContext, SortingContextType, } from "./SortingContext"
+import { TableHeadContainer } from "./TableHeadContainer"
 import { TableHeading } from "./TableHeading"
-
-const TableHeadContainer = styled.thead`
-    width: 100%;
-    display: block;
-
-    tr {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 1.5rem 2rem;
-        border-bottom: 1px solid #dfdfdf;
-    }
-`
 
 const TableHead: React.FC<{
     onClickHeading?: (headingName: string) => void,
