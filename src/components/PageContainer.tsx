@@ -8,6 +8,7 @@ import { Header } from "./Header"
 import { RouteLoader } from "./RouteLoader"
 import { SideNavigation } from "./SideNavigation/SideNavigation"
 import useGetDimensions, { WindowDimensions } from '../lib/hooks/useGetDimensions'
+import { media } from "../styles/responsive"
 
 const Container = styled.div`
     flex: 1;
@@ -19,6 +20,7 @@ const Page = styled.div`
     left: 0;
     top: 0;
     height: 100%;
+    min-height: 40rem;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -26,11 +28,15 @@ const Page = styled.div`
 
 const MainSection = styled.div`
     background-color: ${props => props.theme.colors.background};
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 1rem;
     flex: 1;
     display: flex;
     flex-direction: row;
     overflow: hidden;
+
+    ${media.tablet} {
+        padding: 1.5rem 2rem;
+    }
 
     h1 {
         font-size: 1.5rem;
