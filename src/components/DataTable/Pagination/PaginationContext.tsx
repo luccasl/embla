@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState } from "react"
 
 type PaginationContextType = {
     numberOfRows: number

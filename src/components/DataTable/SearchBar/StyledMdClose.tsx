@@ -1,5 +1,5 @@
-import { MdClose } from "react-icons/md";
-import styled from "styled-components";
+import { MdClose } from "react-icons/md"
+import styled from "styled-components"
 
 const StyledMdClose = styled(MdClose)`
     z-index: 30;

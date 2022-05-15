@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { media } from "../../../styles/responsive";
+import styled from "styled-components"
+import { media } from "../../../styles/responsive"
 
 const PaginationContainer = styled.div`
     height: 3rem;

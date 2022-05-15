@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 const HeaderButton = styled.div`
   display: flex;
@@ -16,6 +16,6 @@ const HeaderButton = styled.div`
   &:hover:nth-child(1) {
     color: #000;
   }
-`;
+`
 
 export { HeaderButton }

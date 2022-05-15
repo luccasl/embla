@@ -1,6 +1,6 @@
-import { MdSearch } from "react-icons/md";
-import styled from "styled-components";
-import { SearchBarContainer } from "./SearchBarContainer";
+import { MdSearch } from "react-icons/md"
+import styled from "styled-components"
+import { SearchBarContainer } from "./SearchBarContainer"
 
 const SearchIcon = styled(MdSearch)`
     position: absolute;
