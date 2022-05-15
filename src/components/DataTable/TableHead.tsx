@@ -3,10 +3,12 @@ import { SortingContext, SortingContextType, } from "./SortingContext"
 import { TableHeadContainer } from "./TableHeadContainer"
 import { TableHeading } from "./TableHeading"
 
-const TableHead: React.FC<{
-    onClickHeading?: (headingName: string) => void,
+type TableHeadProps = {
+    onClickHeading?: (headingName: string) => void
     headings: any[]
-}> = ({
+}
+
+const TableHead: React.FC<TableHeadProps> = ({
     onClickHeading = (heading: string) => null,
     headings = []
 }) => {
