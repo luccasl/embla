@@ -1,4 +1,4 @@
-import { ChangeEvent, memo, useMemo } from "react"
+import { ChangeEvent, useMemo } from "react"
 import { MdChevronLeft, MdChevronRight } from "react-icons/md"
 
 import { ComboBox } from "./ComboBox"
@@ -7,9 +7,11 @@ import { usePagination } from "./hooks/usePagination"
 import { PaginationContainer } from "./PaginationContainer"
 import { PaginationElement } from "./PaginationElement"
 
-const Pagination: React.FC<{
+type PaginationProps = {
     rows: any[]
-}> = ({
+}
+
+const Pagination: React.FC<PaginationProps> = ({
     rows,
 }) => {
     const {
