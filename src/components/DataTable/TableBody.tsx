@@ -33,7 +33,6 @@ const TableBodyContainer = styled.tbody`
 
     & > tr:hover {
         background-color: ${props => lighten(props.theme.colors.primary, 0.8)};
-        cursor: pointer;
     }
 
     & > tr:nth-child(even) {
@@ -41,7 +40,6 @@ const TableBodyContainer = styled.tbody`
 
         &:hover {
             background-color: ${props => lighten(props.theme.colors.primary, 0.8)};
-            cursor: pointer;
         }
     }
 `
