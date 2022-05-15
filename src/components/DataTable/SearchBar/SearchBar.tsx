@@ -1,5 +1,4 @@
 import { ChangeEvent, useContext } from "react"
-import { MdSearch } from "react-icons/md"
 
 import { CloseIcon } from "./CloseIcon"
 import { SearchBarContainer } from "./SearchBarContainer"
