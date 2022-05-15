@@ -69,13 +69,13 @@ const DataTable: React.FC<DataTableProps> = ({
         return queryRegexp.exec(columnsCombined)
       })
     );
-  }, [query, rows])
+  }, [query, rows, setSortedHeading])
 
   const currentIndex = page * numberOfRows
   const paginatedRows = useMemo(() => filteredRows.slice(
       currentIndex,
       currentIndex + numberOfRows
-  ), [page, filteredRows, numberOfRows])
+  ), [currentIndex, filteredRows, numberOfRows])
 
   function sortRows (columnName: string) {
     let sortedArray = [...filteredRowsRef.current]
