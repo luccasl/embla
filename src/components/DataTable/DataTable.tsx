@@ -9,6 +9,7 @@ import { Pagination } from "./Pagination/Pagination"
 import { TableBody } from "./TableBody"
 import { DataTableFrame } from "./DataTableFrame"
 import { Table } from "./Table"
+import { SortingContext, SortingContextType } from "./SortingContext"
 
 const Container = styled.div`
   display: flex;
@@ -34,6 +35,10 @@ const DataTable: React.FC<{
     setPage,
   } = useContext(PaginationContext) as PaginationContextType
 
+  const {
+    setSortedHeading,
+  } = useContext(SortingContext) as SortingContextType
+
   const [filteredRows, setFilteredRows] = useState<any[]>(rows)
 
   const filteredRowsRef = useRef<any[]>([])
@@ -46,6 +51,7 @@ const DataTable: React.FC<{
   useEffect(() => {
     if (query.trim() === "") {
       setFilteredRows(rows)
+      setSortedHeading('')
     }
 
     setFilteredRows(
