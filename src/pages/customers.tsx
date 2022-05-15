@@ -1,7 +1,8 @@
 import { NextPage } from "next"
 import styled from "styled-components"
-import useGetCustomers from "../lib/hooks/useGetCustomers"
 import { parseISO } from "date-fns"
+
+import useGetCustomers from "../lib/hooks/useGetCustomers"
 import { formatCpfCnpj } from "../lib/utils/formatCpfCnpj"
 import { PageContainer } from "../components/PageContainer"
 import { PageIndices } from "../lib/constants/pageIndices"
