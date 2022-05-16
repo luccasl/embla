@@ -20,7 +20,7 @@ const Modal: React.FC<ModalProps> = ({
 }) => {
     return (
         <ModalContainer enabled={enabled}>
-            <Overlay onClick={onClickClose} />
+            <Overlay enabled={enabled} onClick={onClickClose} />
             <ModalFrame enabled={enabled}>
                 <ModalHeader>
                     <ModalTitle>

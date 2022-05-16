@@ -14,8 +14,9 @@ const ModalContainer = styled.div<ModalContainerProps>`
     align-items: center;
     justify-content: center;
     z-index: 100;
+    display: flex;
 
-    display: ${props => props.enabled ? 'flex': 'none'};
+    pointer-events: ${props => props.enabled ? 'all': 'none'};
 
     @media (orientation: landscape) {
         height: 100vw;

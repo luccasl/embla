@@ -12,6 +12,7 @@ import { Modal } from "../components/Modal"
 import { useAppSelector, useAppDispatch } from "../lib/store/hooks"
 import { setSelectedCustomer } from '../lib/reducers/customersReducer'
 import { CustomerInfo } from "../components/Customers/CustomerInfo"
+import { useState } from "react"
 
 const headings = [
     {
@@ -61,6 +62,8 @@ const Customers: NextPage = () => {
 
     const {selectedCustomer} = useAppSelector(state => state.customers)
 
+    const [showModal, setShowModal] = useState<boolean>(false)
+
     const renderCustomersRow = (customer: any) => {
         const data = parseISO(customer.data).toLocaleDateString();
         const documento = formatCpfCnpj(customer.documento)
@@ -81,17 +84,18 @@ const Customers: NextPage = () => {
 
     const selectCustomer = (customer: any) => {
       dispatch(setSelectedCustomer(customer))
+      setShowModal(true)
     }
 
-    const clearSelectedCustomer = () => {
-      selectCustomer(null)
+    const closeModal = () => {
+      setShowModal(false)
     }
 
     return <Container>
         <Modal
-          enabled={selectedCustomer}
+          enabled={showModal}
           title='Detalhes do cliente'
-          onClickClose={clearSelectedCustomer}>
+          onClickClose={closeModal}>
           {selectedCustomer &&
           <CustomerInfo customer={selectedCustomer} /> }
         </Modal>
