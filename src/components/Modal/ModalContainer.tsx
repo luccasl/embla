@@ -22,7 +22,7 @@ const ModalContainer = styled.div<ModalContainerProps>`
         height: 100vw;
     }
 
-    ${media.tablet} {
+    ${media.desktop} {
         @media (orientation: landscape) {
             height: 100%;
         }

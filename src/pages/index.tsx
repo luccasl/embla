@@ -1,6 +1,6 @@
 import { NextPage } from 'next'
 import styled from 'styled-components'
-import { Button } from '../components/Button'
+import { Button } from '../components/Button/index'
 import { Card } from '../components/Card'
 import { Form, FieldGroup, FormTitle } from '../components/Form'
 import { Logo } from '../components/Logo'
@@ -51,7 +51,7 @@ const Home: NextPage = () => {
 
   const authError = useAppSelector(state => state.auth.authError)
 
-  const [accessToken, login]: UseLoginProperties = useLogin();
+  const [accessToken, login, loading]: UseLoginProperties = useLogin();
 
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
@@ -179,9 +179,10 @@ const Home: NextPage = () => {
                   error={ passwordError }
                   maxLength={ 60 } />
               </FieldGroup>
-              <Button onClick={ onClickLogin }>
-                Entrar
-              </Button>
+              <Button
+                onClick={ onClickLogin }
+                caption='Entrar'
+                loading={loading} />
               <ErrorMessage>
                 { authError }
               </ErrorMessage>
