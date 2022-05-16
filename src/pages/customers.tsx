@@ -8,6 +8,10 @@ import { PageContainer } from "../components/PageContainer"
 import { PageIndices } from "../lib/constants/pageIndices"
 import { DataTable } from "../components/DataTable"
 import { TableCell } from "../components/DataTable/Table"
+import { Modal } from "../components/Modal"
+import { useAppSelector, useAppDispatch } from "../lib/store/hooks"
+import { setSelectedCustomer } from '../lib/reducers/customersReducer'
+import { CustomerInfo } from "../components/Customers/CustomerInfo"
 
 const headings = [
     {
@@ -51,14 +55,20 @@ const Container = styled.div`
 `
 
 const Customers: NextPage = () => {
+    const dispatch = useAppDispatch()
+
     const customers = useGetCustomers()
+
+    const {selectedCustomer} = useAppSelector(state => state.customers)
 
     const renderCustomersRow = (customer: any) => {
         const data = parseISO(customer.data).toLocaleDateString();
         const documento = formatCpfCnpj(customer.documento)
 
         return (
-            <tr key={ customer.documento }>
+            <tr
+              key={ customer.documento }
+              onClick={() => selectCustomer(customer)}>
                 <TableCell large>{customer.nome}</TableCell>
                 <TableCell align='right'>{data}</TableCell>
                 <TableCell large align='right'>{documento}</TableCell>
@@ -69,7 +79,22 @@ const Customers: NextPage = () => {
         )
     }
 
+    const selectCustomer = (customer: any) => {
+      dispatch(setSelectedCustomer(customer))
+    }
+
+    const clearSelectedCustomer = () => {
+      selectCustomer(null)
+    }
+
     return <Container>
+        <Modal
+          enabled={selectedCustomer}
+          title='Detalhes do cliente'
+          onClickClose={clearSelectedCustomer}>
+          {selectedCustomer &&
+          <CustomerInfo customer={selectedCustomer} /> }
+        </Modal>
         <PageContainer activePage={ PageIndices.Customers }>
           <div style={{ overflow: 'hidden', margin: '0 auto', maxWidth: '70rem', display: 'flex', flexDirection: 'column', flex: 1, }}>
             <h1>

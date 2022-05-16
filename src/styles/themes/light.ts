@@ -4,6 +4,7 @@ const lightTheme = {
     colors: {
         primary: '#9B51E0',
         text: '#333333',
+        lightText: '#575757',
         light: '#FFFFFF',
         border: '#BDBDBD',
         inputBackground: '#F2F2F2',
